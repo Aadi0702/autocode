@@ -1,0 +1,16 @@
+A code to detect and scan Arabic barcodes pdf417 without using arabic keyboard with a 2d scanner
+# the code goes down below
+import serial
+import codecs
+# Configure the serial port settings
+serial_port = 'COM3'  # Replace with the appropriate serial port name
+baud_rate = 9600  # Replace with the baud rate used by your USB CDC scanner
+# Open the serial port
+ser = serial.Serial(serial_port, baud_rate)
+# Read and print the byte data
+while True:
+    if ser.in_waiting > 0:
+        # Read a byte
+        byte_data: bytes | None = ser.read()
+        hex_data = byte_data.decode('unicode_escape')  # Convert bytes to string
+        print (hex_data,end='')
